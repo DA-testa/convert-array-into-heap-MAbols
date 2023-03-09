@@ -8,21 +8,70 @@ def build_heap(data):
     # try to achieve  O(n) and not O(n2)
     
     array=np.array(data)
-    
-    for i in range(len(array)):
-        i=len(array)-1-i
+    i=1
+    for i in range(len(data)):
+        i=len(data)-1-i
         while True:
-
-            if array[i]<array[floor(i/2)]:
-                temp=array[floor(i/2)]
-                array[floor(i/2)]=array[i]
+            p=floor(i/2)
+            if array[i]<array[p]:
+                temp=array[p]
+                array[p]=array[i]
                 array[i]=temp
-                swaps.append([floor(i/2)-1,i-1])
-                i=floor(i/2)
-                continue
+                swaps.append([p-1,i-1])
+                i=p
             else:
+                #f=abs((floor(i/2))-1)
                 break
-
+    i=1
+    # for i in range(len(data)):
+    #     i=len(data)-1-i
+    #     while True:
+    #         p=floor(i/2)
+    #         if array[i]<array[p]:
+    #             temp=array[p]
+    #             array[p]=array[i]
+    #             array[i]=temp
+    #             swaps.append([p-1,i-1])
+    #             i=p
+    #         else:
+    #             #f=abs((floor(i/2))-1)
+    #             break
+    i=1
+    # for i in range(len(data)):
+    #     i=len(data)-1-i
+    #     if (2*i)+1<=len(data)-1:
+    #         if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+    #             i=1
+    #             for i in range(len(data)):
+    #                 i=len(data)-1-i
+    #                 while True:
+    #                     p=floor(i/2)
+    #                     if array[i]<array[p]:
+    #                         temp=array[p]
+    #                         array[p]=array[i]
+    #                         array[i]=temp
+    #                         swaps.append([p-1,i-1])
+    #                         i=p
+    #                     else:
+    #                         #f=abs((floor(i/2))-1)
+    #                         break
+    #     if (2*i)+2<=len(data)-1:
+    #         if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+    #             if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+    #                 i=1
+    #                 for i in range(len(data)):
+    #                     i=len(data)-1-i
+    #                     while True:
+    #                         p=floor(i/2)
+    #                         if array[i]<array[p]:
+    #                             temp=array[p]
+    #                             array[p]=array[i]
+    #                             array[i]=temp
+    #                             swaps.append([p-1,i-1])
+    #                             i=p
+    #                         else:
+    #                             #f=abs((floor(i/2))-1)
+    #                             break
     return swaps
 
 
@@ -52,7 +101,7 @@ def main():
             
         else:
             
-            fails=open("./test/"+faila_nosaukums)
+            fails=open("./tests/"+faila_nosaukums)
             n=fails.readline()
             n=int(n)
             data=list(map(int,fails.readline().split()))
@@ -71,7 +120,7 @@ def main():
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
-
+    print(len(swaps))
 
 if __name__ == "__main__":
     main()
