@@ -22,7 +22,7 @@ def build_heap(data):
             else:
                 #f=abs((floor(i/2))-1)
                 break
-    i=1
+    # i=1
     # for i in range(len(data)):
     #     i=len(data)-1-i
     #     while True:
@@ -37,41 +37,61 @@ def build_heap(data):
     #             #f=abs((floor(i/2))-1)
     #             break
     i=1
-    # for i in range(len(data)):
-    #     i=len(data)-1-i
-    #     if (2*i)+1<=len(data)-1:
-    #         if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-    #             i=1
-    #             for i in range(len(data)):
-    #                 i=len(data)-1-i
-    #                 while True:
-    #                     p=floor(i/2)
-    #                     if array[i]<array[p]:
-    #                         temp=array[p]
-    #                         array[p]=array[i]
-    #                         array[i]=temp
-    #                         swaps.append([p-1,i-1])
-    #                         i=p
-    #                     else:
-    #                         #f=abs((floor(i/2))-1)
-    #                         break
-    #     if (2*i)+2<=len(data)-1:
-    #         if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-    #             if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-    #                 i=1
-    #                 for i in range(len(data)):
-    #                     i=len(data)-1-i
-    #                     while True:
-    #                         p=floor(i/2)
-    #                         if array[i]<array[p]:
-    #                             temp=array[p]
-    #                             array[p]=array[i]
-    #                             array[i]=temp
-    #                             swaps.append([p-1,i-1])
-    #                             i=p
-    #                         else:
-    #                             #f=abs((floor(i/2))-1)
-    #                             break
+    for i in range(len(data)):
+        i=len(data)-1-i
+        if (2*i)+1<=len(data)-1:
+            if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+                if array[2*i]<array[(2*i)+1]:
+                    temp=array[i]
+                    array[i]=array[2*i]
+                    array[2*i]=temp
+                    swaps.append(i-1,2*i-1)
+                else:
+                    temp=array[i]
+                    array[i]=array[(2*i)+1]
+                    array[(2*i)+1]=temp
+                    swaps.append([i-1,(2*i)+1-1])
+                # i=1
+                # for i in range(len(data)):
+                #     i=len(data)-1-i
+                #     while True:
+                #         p=floor(i/2)
+                #         if array[i]<array[p]:
+                #             temp=array[p]
+                #             array[p]=array[i]
+                #             array[i]=temp
+                #             swaps.append([p-1,i-1])
+                #             i=p
+                #         else:
+                #             #f=abs((floor(i/2))-1)
+                #             break
+        if (2*i)+2<=len(data)-1:
+            if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+                if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
+                    if array[2*i]<array[(2*i)+1]:
+                        temp=array[i]
+                        array[i]=array[2*i]
+                        array[2*i]=temp
+                        swaps.append(i-1,2*i-1)
+                    else:
+                        temp=array[i]
+                        array[i]=array[(2*i)+1]
+                        array[(2*i)+1]=temp
+                        swaps.append([i-1,(2*i)+1-1])
+                    # i=1
+                    # for i in range(len(data)):
+                    #     i=len(data)-1-i
+                    #     while True:
+                    #         p=floor(i/2)
+                    #         if array[i]<array[p]:
+                    #             temp=array[p]
+                    #             array[p]=array[i]
+                    #             array[i]=temp
+                    #             swaps.append([p-1,i-1])
+                    #             i=p
+                    #         else:
+                    #             #f=abs((floor(i/2))-1)
+                    #             break
     return swaps
 
 
@@ -109,6 +129,7 @@ def main():
 
             # calls function to assess the data 
             # and give back all swaps
+            data.insert(0,0)
             swaps = build_heap(data)
 
 
