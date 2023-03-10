@@ -7,16 +7,16 @@ def build_heap(data):
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
     
-    array=np.array(data)
-    i=1
-    for i in range(len(data)):
-        i=len(data)-1-i
+    data=np.array(data)
+    #i=1
+    for i in range(1,len(data)):
+        i=len(data)-i
         while True:
             p=floor(i/2)
-            if array[i]<array[p]:
-                temp=array[p]
-                array[p]=array[i]
-                array[i]=temp
+            if data[i]<data[p]:
+                temp=data[p]
+                data[p]=data[i]
+                data[i]=temp
                 swaps.append([p-1,i-1])
                 i=p
             else:
@@ -36,20 +36,20 @@ def build_heap(data):
     #         else:
     #             #f=abs((floor(i/2))-1)
     #             break
-    i=1
+    #i=1
     for i in range(len(data)):
         i=len(data)-1-i
         if (2*i)+1<=len(data)-1:
-            if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-                if array[2*i]<array[(2*i)+1]:
-                    temp=array[i]
-                    array[i]=array[2*i]
-                    array[2*i]=temp
-                    swaps.append(i-1,2*i-1)
+            if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
+                if data[2*i]<data[(2*i)+1]:
+                    temp=data[i]
+                    data[i]=data[2*i]
+                    data[2*i]=temp
+                    swaps.append([i-1,2*i-1])
                 else:
-                    temp=array[i]
-                    array[i]=array[(2*i)+1]
-                    array[(2*i)+1]=temp
+                    temp=data[i]
+                    data[i]=data[(2*i)+1]
+                    data[(2*i)+1]=temp
                     swaps.append([i-1,(2*i)+1-1])
                 # i=1
                 # for i in range(len(data)):
@@ -66,17 +66,17 @@ def build_heap(data):
                 #             #f=abs((floor(i/2))-1)
                 #             break
         if (2*i)+2<=len(data)-1:
-            if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-                if array[2*i]<array[i] or array[(2*i)+1]<array[i]:
-                    if array[2*i]<array[(2*i)+1]:
-                        temp=array[i]
-                        array[i]=array[2*i]
-                        array[2*i]=temp
+            if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
+                if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
+                    if data[2*i]<data[(2*i)+1]:
+                        temp=data[i]
+                        data[i]=data[2*i]
+                        data[2*i]=temp
                         swaps.append(i-1,2*i-1)
                     else:
-                        temp=array[i]
-                        array[i]=array[(2*i)+1]
-                        array[(2*i)+1]=temp
+                        temp=data[i]
+                        data[i]=data[(2*i)+1]
+                        data[(2*i)+1]=temp
                         swaps.append([i-1,(2*i)+1-1])
                     # i=1
                     # for i in range(len(data)):
