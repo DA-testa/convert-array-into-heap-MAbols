@@ -9,19 +9,19 @@ def build_heap(data):
     
    # data=np.array(data)
     #i=1
-    for i in range(1,len(data)):
-        i=len(data)-i
-        while True:
-            p=floor(i/2)
-            if data[i]<data[p]:
-                temp=data[p]
-                data[p]=data[i]
-                data[i]=temp
-                swaps.append([p-1,i-1])
-                i=p
-            else:
-                #f=abs((floor(i/2))-1)
-                break
+    # for i in range(1,len(data)+1):
+    #     i=len(data)-i
+    #     while True:
+    #         p=floor(i/2)
+    #         if data[i]<data[p]:
+    #             temp=data[p]
+    #             data[p]=data[i]
+    #             data[i]=temp
+    #             swaps.append([p-1,i-1])
+    #             i=p
+    #         else:
+    #             #f=abs((floor(i/2))-1)
+    #             break
     # i=1
     # for i in range(len(data)):
     #     i=len(data)-1-i
@@ -36,62 +36,73 @@ def build_heap(data):
     #         else:
     #             #f=abs((floor(i/2))-1)
     #             break
-    #i=1
-    for i in range(len(data)):
-        i=len(data)-1-i
+    i=1
+    check=True
+    
+    while check:
+        i=len(data)-i
+        lc=i*2
+        rc=(i*2)+1
         if (2*i)+1<=len(data)-1:
-            if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
-                if data[2*i]<data[(2*i)+1]:
-                    temp=data[i]
-                    data[i]=data[2*i]
-                    data[2*i]=temp
-                    swaps.append([i-1,2*i-1])
+            for i in range(1,len(data)):
+                if data[rc]<data[i] or data[lc]<data[i]:
+                    for i in range(1,len(data)):
+                        i=len(data)-i
+                        lc=i*2
+                        rc=(i*2)+1
+                        if (2*i)+1<=len(data)-1:
+                            if data[rc]<data[i] or data[lc]<data[i]:
+                                if data[rc]<data[lc]:
+                                    temp=data[i]
+                                    data[i]=data[rc]
+                                    data[rc]=temp
+                                    swaps.append([i-1,rc-1])
+                                    i=floor(i/2)
+                                else:
+                                    temp=data[i]
+                                    data[i]=data[lc]
+                                    data[lc]=temp
+                                    swaps.append([i-1,lc-1])
+                                    i=floor(i/2)
+                            else:
+                                break
+                                #continue
+                        else:
+                            continue
                 else:
-                    temp=data[i]
-                    data[i]=data[(2*i)+1]
-                    data[(2*i)+1]=temp
-                    swaps.append([i-1,(2*i)+1-1])
-                # i=1
-                # for i in range(len(data)):
-                #     i=len(data)-1-i
-                #     while True:
-                #         p=floor(i/2)
-                #         if array[i]<array[p]:
-                #             temp=array[p]
-                #             array[p]=array[i]
-                #             array[i]=temp
-                #             swaps.append([p-1,i-1])
-                #             i=p
-                #         else:
-                #             #f=abs((floor(i/2))-1)
-                #             break
-        if (2*i)+2<=len(data)-1:
-            if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
-                if data[2*i]<data[i] or data[(2*i)+1]<data[i]:
-                    if data[2*i]<data[(2*i)+1]:
+                     check=False
+                    # i=len(data)-1
+                    #break
+        elif (2*i)+2<=len(data)-1:
+            
+            if data[lc]<data[i] or data[rc]<data[i]:
+                for i in range(len(data)):
+                    i=len(data)-i
+                    lc=i*2
+                    rc=(i*2)+1
+                    if data[lc]<data[rc]:
                         temp=data[i]
-                        data[i]=data[2*i]
-                        data[2*i]=temp
-                        swaps.append(i-1,2*i-1)
+                        data[i]=data[lc]
+                        data[lc]=temp
+                        swaps.append(i-1,lc-1)
+                        i=floor(i/2)
                     else:
                         temp=data[i]
-                        data[i]=data[(2*i)+1]
-                        data[(2*i)+1]=temp
-                        swaps.append([i-1,(2*i)+1-1])
-                    # i=1
-                    # for i in range(len(data)):
-                    #     i=len(data)-1-i
-                    #     while True:
-                    #         p=floor(i/2)
-                    #         if array[i]<array[p]:
-                    #             temp=array[p]
-                    #             array[p]=array[i]
-                    #             array[i]=temp
-                    #             swaps.append([p-1,i-1])
-                    #             i=p
-                    #         else:
-                    #             #f=abs((floor(i/2))-1)
-                    #             break
+                        data[i]=data[rc]
+                        data[rc]=temp
+                        swaps.append([i-1,rc-1])
+                        i=floor(i/2)
+            else:
+                check=False
+                continue
+           
+        else:
+            i-=1
+            
+               
+        
+                    
+    
     return swaps
 
 
