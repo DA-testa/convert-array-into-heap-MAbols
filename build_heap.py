@@ -1,13 +1,13 @@
 # python3
 from math import floor
-import numpy as np
+#import numpy as np
 
 def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
     
-    data=np.array(data)
+   # data=np.array(data)
     #i=1
     for i in range(1,len(data)):
         i=len(data)-i
